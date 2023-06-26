@@ -4,6 +4,7 @@ import { stdin as input, stdout as output } from 'process';
 import { up } from './services/up.js';
 import { cd } from './services/cd.js';
 import { ls } from './services/ls.js';
+import { os } from './services/os.js';
 
 const getUserName = () => {
   const userName = argv.slice(2).find((arg) => arg.startsWith('--username='));
@@ -31,6 +32,9 @@ rl.on('line', async (data) => {
       break;
     case 'ls':
       await ls();
+      break;
+    case 'os':
+      await os();
       break;
     case '.exit':
       rl.close();
