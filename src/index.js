@@ -5,6 +5,7 @@ import { up } from './services/up.js';
 import { cd } from './services/cd.js';
 import { ls } from './services/ls.js';
 import { os } from './services/os.js';
+import { addFile } from './services/addFile.js';
 
 const getUserName = () => {
   const userName = argv.slice(2).find((arg) => arg.startsWith('--username='));
@@ -22,7 +23,7 @@ try {
 const rl = readline.createInterface({ input, output });
 
 rl.on('line', async (data) => {
-  let [command, ...params] = data.trim().split(' ');
+  const [command, ...params] = data.trim().split(' ');
   switch (command) {
     case 'up':
       up();
@@ -34,7 +35,10 @@ rl.on('line', async (data) => {
       await ls();
       break;
     case 'os':
-      await os();
+      os(params[0]);
+      break;
+    case 'add':
+      await addFile(params[0]);
       break;
     case '.exit':
       rl.close();

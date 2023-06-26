@@ -1,20 +1,20 @@
 import { EOL, cpus, userInfo, arch } from 'os';
 
-export const os = (args) => {
+export const os = (arg) => {
   try {
-    switch (args[0]) {
+    switch (arg) {
       case '--EOL':
-        console.log(os.EOL);
+        console.log(`EOL: ${JSON.stringify(EOL)}`);
         break;
       case '--cpus':
-        console.log(`Amount CPU: ${cores.length}`);
         const cpuData = cpus().map(({ model, speed }) => {
           return { model: model, 'clock rate': speed / 1000 + 'GHz' };
         });
+        console.log(`Amount CPU: ${cpuData.length}`);
         console.table(cpuData);
         break;
       case '--homedir':
-        console.log(`Home directory: ${homedir()}`);
+        console.log(`Home directory: ${userInfo().homedir}`);
         break;
       case '--username':
         console.log(`UserName: ${userInfo().username}`);
