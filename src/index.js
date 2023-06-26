@@ -12,6 +12,8 @@ import { readFile } from './services/readFile.js';
 import { moveFile } from './services/moveFile.js';
 import { copyFile } from './services/copyFile.js';
 import { hashFile } from './services/hashFile.js';
+import { compressFile } from './services/compressFile.js';
+import { decompressFile } from './services/decompressFile.js';
 
 const getUserName = () => {
   const userName = argv.slice(2).find((arg) => arg.startsWith('--username='));
@@ -63,6 +65,12 @@ rl.on('line', async (data) => {
       break;
     case 'hash':
       hashFile(params[0]);
+      break;
+    case 'compress':
+      await compressFile(arams[0], params[1]);
+      break;
+    case 'decompress':
+      await decompressFile(params[0], params[1]);
       break;
     case '.exit':
       rl.close();
