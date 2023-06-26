@@ -3,6 +3,7 @@ import * as readline from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
 import { up } from './services/up.js';
 import { cd } from './services/cd.js';
+import { ls } from './services/ls.js';
 
 const getUserName = () => {
   const userName = argv.slice(2).find((arg) => arg.startsWith('--username='));
@@ -19,7 +20,7 @@ try {
 
 const rl = readline.createInterface({ input, output });
 
-rl.on('line', (data) => {
+rl.on('line', async (data) => {
   let [command, ...params] = data.trim().split(' ');
   switch (command) {
     case 'up':
@@ -28,11 +29,14 @@ rl.on('line', (data) => {
     case 'cd':
       cd(params);
       break;
-    case ".exit":
+    case 'ls':
+      await ls();
+      break;
+    case '.exit':
       rl.close();
       break;
   }
-  stdout.write(`You are currently in ${cwd()}\n`)  
+  stdout.write(`You are currently in ${cwd()}\n`);
 });
 rl.on('close', () => {
   stdout.write(`Thank you for using File Manager, ${userName}, goodbye!\n`);
