@@ -6,6 +6,12 @@ import { cd } from './services/cd.js';
 import { ls } from './services/ls.js';
 import { os } from './services/os.js';
 import { addFile } from './services/addFile.js';
+import { removeFile } from './services/removeFile.js';
+import { renameFile } from './services/renameFile.js';
+import { readFile } from './services/readFile.js';
+import { moveFile } from './services/moveFile.js';
+import { copyFile } from './services/copyFile.js';
+import { hashFile } from './services/hashFile.js';
 
 const getUserName = () => {
   const userName = argv.slice(2).find((arg) => arg.startsWith('--username='));
@@ -39,6 +45,24 @@ rl.on('line', async (data) => {
       break;
     case 'add':
       await addFile(params[0]);
+      break;
+    case 'rm':
+      await removeFile(params[0]);
+      break;
+    case 'cat':
+      readFile(params[0]);
+      break;
+    case 'rn':
+      await renameFile(params[0], params[1]);
+      break;
+    case 'mv':
+      await moveFile(params[0], params[1]);
+      break;
+    case 'cp':
+      await copyFile(params[0], params[1]);
+      break;
+    case 'hash':
+      hashFile(params[0]);
       break;
     case '.exit':
       rl.close();

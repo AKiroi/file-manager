@@ -1,10 +1,11 @@
 import { resolve } from 'path';
-import fs from 'fs';
+import { createWriteStream } from 'fs';
 
 export const addFile = async (file) => {
-  const targetFile = resolve(file);
+  const pathToFile = resolve(file);
+
   try {
-    const ws = fs.createWriteStream(targetFile);
+    const ws = createWriteStream(pathToFile);
     ws.end();
     ws.on('finish', () => {
       console.log(`The file has been added`);
