@@ -67,7 +67,7 @@ rl.on('line', async (data) => {
       hashFile(params[0]);
       break;
     case 'compress':
-      await compressFile(arams[0], params[1]);
+      await compressFile(params[0], params[1]);
       break;
     case 'decompress':
       await decompressFile(params[0], params[1]);
