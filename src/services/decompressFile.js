@@ -3,7 +3,7 @@ import { createReadStream, createWriteStream } from 'fs';
 import { createBrotliDecompress  } from 'zlib';
 import { pipeline } from 'stream/promises';
 
-export const compressFile = async (curPath, newFilePath) => {
+export const decompressFile = async (curPath, newFilePath) => {
   const curFile = resolve(curPath);
   const { base } = parse(curFile);
   const newFile = resolve(newFilePath, base);
