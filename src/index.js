@@ -75,6 +75,9 @@ rl.on('line', async (data) => {
     case '.exit':
       rl.close();
       break;
+    default:
+      console.log('Invalid input');
+      break;
   }
   stdout.write(`You are currently in ${cwd()}\n`);
 });
