@@ -7,7 +7,7 @@ export const renameFile = async (curFile, newFile) => {
   try {
     await rename(pathToCurFile, pathToNewFile);
     console.log(`The file has been renamed`);
-  } catch (err) {
+  } catch {
     console.log(`Operation failed`);
   }
 };

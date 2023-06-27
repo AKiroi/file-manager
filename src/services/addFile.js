@@ -10,7 +10,7 @@ export const addFile = async (file) => {
     ws.on('finish', () => {
       console.log(`The file has been added`);
     });
-  } catch (err) {
+  } catch {
     console.log(`Operation failed`);
   }
 };

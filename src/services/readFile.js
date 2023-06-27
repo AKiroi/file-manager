@@ -7,7 +7,7 @@ export const readFile = (file) => {
     const rs = createReadStream(pathToFile);
     rs.pipe(process.stdout);
     rs.on('end', console.log);
-  } catch (err) {
+  } catch {
     console.log(`Operation failed`);
   }
 };

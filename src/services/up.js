@@ -1,7 +1,7 @@
 export const up = () => {
   try {
     process.chdir('..');
-  } catch (e) {
+  } catch {
     console.error('Operation failed');
   }
 };
