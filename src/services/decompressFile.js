@@ -6,7 +6,7 @@ import { pipeline } from 'stream/promises';
 export const decompressFile = async (curPath, newFilePath) => {
   const curFile = resolve(curPath);
   const { base } = parse(curFile);
-  const newFile = resolve(newFilePath, base);
+  const newFile = resolve(newFilePath, base.replace('.gz', ''));
 
   try {
     const rs = createReadStream(curFile);
