@@ -1,4 +1,5 @@
-export const up = () => {
+export const up = ([path]) => {
+  if (path) return console.log('Invalid input');
   try {
     process.chdir('..');
   } catch {

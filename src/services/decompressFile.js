@@ -4,6 +4,7 @@ import { createBrotliDecompress  } from 'zlib';
 import { pipeline } from 'stream/promises';
 
 export const decompressFile = async (curPath, newFilePath) => {
+  if (!curPath && !newFilePath) return console.log('Invalid input');
   const curFile = resolve(curPath);
   const { base } = parse(curFile);
   const newFile = resolve(newFilePath, base.replace('.gz', ''));

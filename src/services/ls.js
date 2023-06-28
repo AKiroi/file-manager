@@ -1,7 +1,8 @@
 import { readdir } from 'fs/promises';
 import { cwd } from 'process';
 
-export const ls = async () => {
+export const ls = async ([path]) => {
+  if (path) return console.log('Invalid input');
   try {
     const files = await readdir(cwd(), { withFileTypes: true });
 

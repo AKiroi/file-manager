@@ -3,6 +3,7 @@ import { createReadStream } from 'fs';
 import { createHash } from 'crypto';
 
 export const hashFile = (file) => {
+  if (!file) return console.log('Invalid input');
   const pathToFile = resolve(file);
 
   try {

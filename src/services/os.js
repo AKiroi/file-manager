@@ -1,6 +1,7 @@
 import { EOL, cpus, userInfo, arch } from 'os';
 
 export const os = (arg) => {
+  if (!arg) return console.log('Invalid input');
   try {
     switch (arg) {
       case '--EOL':

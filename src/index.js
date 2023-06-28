@@ -20,27 +20,23 @@ const getUserName = () => {
   return userName ? userName.split('=')[1] : 'Strange User';
 };
 
-try {
-  const userName = getUserName();
-  stdout.write(`Welcome to the File Manager, ${userName}!\n`);
-  stdout.write(`You are currently in ${cwd()}\n`);
-} catch (error) {
-  console.log(error);
-}
+const userName = getUserName();
+stdout.write(`Welcome to the File Manager, ${userName}!\n`);
+stdout.write(`You are currently in ${cwd()}\n`);
 
 const rl = readline.createInterface({ input, output });
 
 rl.on('line', async (data) => {
   const [command, ...params] = data.trim().split(' ');
-  switch (command) {
+  switch (command.trim()) {
     case 'up':
-      up();
+      up(params);
       break;
     case 'cd':
       cd(params);
       break;
     case 'ls':
-      await ls();
+      await ls(params);
       break;
     case 'os':
       os(params[0]);

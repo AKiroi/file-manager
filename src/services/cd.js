@@ -1,7 +1,11 @@
 export const cd = (args) => {
-  try {
-    process.chdir(args[0]);
-  } catch {
-    console.log('Operation failed');
+  if (!args) {
+    return console.log('Invalid input');
+  } else {
+    try {
+      process.chdir(args[0]);
+    } catch {
+      console.log('Operation failed');
+    }
   }
 };

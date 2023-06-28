@@ -2,9 +2,10 @@ import { resolve } from 'path';
 import { createWriteStream } from 'fs';
 
 export const addFile = async (file) => {
-  const pathToFile = resolve(file);
-
+  if (!file) return console.log('Invalid input');
+  
   try {
+    const pathToFile = resolve(file);
     const ws = createWriteStream(pathToFile);
     ws.end();
     ws.on('finish', () => {

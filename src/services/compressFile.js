@@ -4,6 +4,7 @@ import { createBrotliCompress } from 'zlib';
 import { pipeline } from 'stream/promises';
 
 export const compressFile = async (curPath, newFilePath) => {
+  if (!curPath && !newFilePath) return console.log('Invalid input');
   const curFile = resolve(curPath);
   const { base } = parse(curFile);
   const newFile = resolve(newFilePath, `${base}.gz`);
