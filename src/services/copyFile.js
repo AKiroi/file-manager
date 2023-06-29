@@ -12,6 +12,14 @@ export const copyFile = async (curPath, newFilePath) => {
     const rs = createReadStream(curFile);
     const ws = createWriteStream(newFile);
     await pipeline(rs, ws);
+
+    rs.on('error', (error) => {
+      console.error('Error reading file:', error.message);
+    });
+  
+    ws.on('error', (error) => {
+      console.error('Error writing file:', error.message);
+    });
   } catch {
     console.log(`Operation failed`);
   }

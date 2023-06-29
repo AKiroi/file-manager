@@ -8,6 +8,9 @@ export const addFile = async (file) => {
     const pathToFile = resolve(file);
     const ws = createWriteStream(pathToFile);
     ws.end();
+    ws.on('error', (error) => {
+      console.error('Error adding file:', error.message);
+    });
     ws.on('finish', () => {
       console.log(`The file has been added`);
     });
